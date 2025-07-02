@@ -46,18 +46,18 @@
                                 {{ ucfirst($ticket->status) }}
                             </span>
                             <div class="flex space-x-1">
-                                <button wire:click="updateStatus('open')" class="px-2 py-1 text-xs rounded @if($ticket->status === 'open') bg-blue-600 text-white @else bg-blue-100 text-blue-800 hover:bg-blue-200 @endif">
+                                <x-primary-button wire:click="updateStatus('open')" class="px-2 py-1 text-xs rounded @if($ticket->status === 'open') bg-blue-600 text-white @else bg-blue-100 text-blue-800 hover:bg-blue-200 @endif">
                                     Open
-                                </button>
-                                <button wire:click="updateStatus('in progress')" class="px-2 py-1 text-xs rounded @if($ticket->status === 'in progress') bg-yellow-600 text-white @else bg-yellow-100 text-yellow-800 hover:bg-yellow-200 @endif">
+                                </x-primary-button>
+                                <x-primary-button wire:click="updateStatus('in progress')" class="px-2 py-1 text-xs rounded @if($ticket->status === 'in progress') bg-yellow-600 text-white @else bg-yellow-100 text-yellow-800 hover:bg-yellow-200 @endif">
                                     In Progress
-                                </button>
-                                <button wire:click="updateStatus('blocked')" class="px-2 py-1 text-xs rounded @if($ticket->status === 'blocked') bg-red-600 text-white @else bg-red-100 text-red-800 hover:bg-red-200 @endif">
+                                </x-primary-button>
+                                <x-primary-button wire:click="updateStatus('blocked')" class="px-2 py-1 text-xs rounded @if($ticket->status === 'blocked') bg-red-600 text-white @else bg-red-100 text-red-800 hover:bg-red-200 @endif">
                                     Blocked
-                                </button>
-                                <button wire:click="updateStatus('done')" class="px-2 py-1 text-xs rounded @if($ticket->status === 'done') bg-green-600 text-white @else bg-green-100 text-green-800 hover:bg-green-200 @endif">
+                                </x-primary-button>
+                                <x-primary-button wire:click="updateStatus('done')" class="px-2 py-1 text-xs rounded @if($ticket->status === 'done') bg-green-600 text-white @else bg-green-100 text-green-800 hover:bg-green-200 @endif">
                                     Done
-                                </button>
+                                </x-primary-button>
                             </div>
                         </div>
                     </dd>
@@ -76,15 +76,15 @@
                                 {{ ucfirst($ticket->priority) }}
                             </span>
                             <div class="flex space-x-1">
-                                <button wire:click="updatePriority('low')" class="px-2 py-1 text-xs rounded @if($ticket->priority === 'low') bg-gray-600 text-white @else bg-gray-100 text-gray-800 hover:bg-gray-200 @endif">
+                                <x-primary-button wire:click="updatePriority('low')" class="px-2 py-1 text-xs rounded @if($ticket->priority === 'low') bg-gray-600 text-white @else bg-gray-100 text-gray-800 hover:bg-gray-200 @endif">
                                     Low
-                                </button>
-                                <button wire:click="updatePriority('medium')" class="px-2 py-1 text-xs rounded @if($ticket->priority === 'medium') bg-yellow-600 text-white @else bg-yellow-100 text-yellow-800 hover:bg-yellow-200 @endif">
+                                </x-primary-button>
+                                <x-primary-button wire:click="updatePriority('medium')" class="px-2 py-1 text-xs rounded @if($ticket->priority === 'medium') bg-yellow-600 text-white @else bg-yellow-100 text-yellow-800 hover:bg-yellow-200 @endif">
                                     Medium
-                                </button>
-                                <button wire:click="updatePriority('high')" class="px-2 py-1 text-xs rounded @if($ticket->priority === 'high') bg-red-600 text-white @else bg-red-100 text-red-800 hover:bg-red-200 @endif">
+                                </x-primary-button>
+                                <x-primary-button wire:click="updatePriority('high')" class="px-2 py-1 text-xs rounded @if($ticket->priority === 'high') bg-red-600 text-white @else bg-red-100 text-red-800 hover:bg-red-200 @endif">
                                     High
-                                </button>
+                                </x-primary-button>
                             </div>
                         </div>
                     </dd>

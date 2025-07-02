@@ -17,6 +17,10 @@ Route::middleware(['auth'])->group(function () {
         return view('tickets.index');
     })->name('tickets.index');
 
+    Route::get('/my-tickets', function () {
+        return view('tickets.my-tickets');
+    })->name('tickets.my');
+
     Route::get('/tickets/create', function () {
         return view('tickets.create');
     })->name('tickets.create');

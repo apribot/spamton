@@ -2,13 +2,12 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Tickets') }}
+                {{ __('My Tickets') }}
             </h2>
             <form method="GET" action="{{ route('tickets.create') }}">
                 <x-primary-button type="submit">
                     {{ __('Create Ticket') }}
                 </x-primary-button>
-
             </form>
         </div>
     </x-slot>
@@ -23,7 +22,7 @@
                         </div>
                     @endif
 
-                    <livewire:ticket-list />
+                    <livewire:my-tickets />
                 </div>
             </div>
         </div>
