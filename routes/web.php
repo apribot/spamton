@@ -1,33 +1,45 @@
 <?php
 
+use App\Livewire\Settings\Appearance;
+use App\Livewire\Settings\Password;
+use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+use App\Livewire\NewTicket;
+use App\Livewire\ViewTicket;
+use App\Livewire\TicketList;
+use App\Livewire\Counter;
+
+Route::get('/counter', Counter::class);
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+
+Route::get('new-ticket', NewTicket::class)
+    ->middleware(['auth', 'verified'])
+    ->name('new-ticket');
+
+Route::get('view-ticket/{id}', ViewTicket::class)
+    ->middleware(['auth', 'verified'])
+    ->name('view-ticket');
+
+Route::get('tickets', TicketList::class)
+    ->middleware(['auth', 'verified'])
+    ->name('tickets');
+
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/tickets', function () {
-        return view('tickets.index');
-    })->name('tickets.index');
+    Route::redirect('settings', 'settings/profile');
 
-    Route::get('/my-tickets', function () {
-        return view('tickets.my-tickets');
-    })->name('tickets.my');
-
-    Route::get('/tickets/create', function () {
-        return view('tickets.create');
-    })->name('tickets.create');
-
-    Route::get('/tickets/{ticket}', function (\App\Models\Ticket $ticket) {
-        return view('tickets.show', compact('ticket'));
-    })->name('tickets.show');
+    Route::get('settings/profile', Profile::class)->name('settings.profile');
+    Route::get('settings/password', Password::class)->name('settings.password');
+    Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 });
 
 require __DIR__.'/auth.php';

@@ -19,9 +19,7 @@ class EmailVerificationTest extends TestCase
 
         $response = $this->actingAs($user)->get('/verify-email');
 
-        $response
-            ->assertSeeVolt('pages.auth.verify-email')
-            ->assertStatus(200);
+        $response->assertStatus(200);
     }
 
     public function test_email_can_be_verified(): void
@@ -39,6 +37,7 @@ class EmailVerificationTest extends TestCase
         $response = $this->actingAs($user)->get($verificationUrl);
 
         Event::assertDispatched(Verified::class);
+
         $this->assertTrue($user->fresh()->hasVerifiedEmail());
         $response->assertRedirect(route('dashboard', absolute: false).'?verified=1');
     }
